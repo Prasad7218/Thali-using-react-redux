@@ -6,6 +6,9 @@ import './Thali.css'
 import {useDispatch} from 'react-redux'
 import { Dishes } from './Dishes';
 import {addTocart} from './thaliSlice'
+import { Row, Col } from 'antd';
+
+
 
 
 
@@ -21,12 +24,14 @@ const Thali = () => {
   return (
       <>
     <div className="container">
+    <Row>
       {
         Dishes.map((ele)=>{
           const { id, title, img, price, quantity, description } = ele
           return(
             <>
-            <Card
+            <Col span={6} style={{marginTop:"40px",marginLeft:'80px',display:'flex',justifyContent:'space-around'}}> 
+      <Card
             hoverable
             style={{ width: 240}}
             cover={<img alt="example" src={img}/>}
@@ -36,11 +41,14 @@ const Thali = () => {
             <div>Qty:{quantity}</div>
             <button onClick={()=>clickHandler(ele)}>Add to cart</button>
           </Card>
+          </Col>
           </>
 
           )
         })
       }
+      
+      </Row>
       </div>
       </>
   )
